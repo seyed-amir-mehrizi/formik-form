@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-import { Formik, Form , Field } from 'formik'
+import { Formik, Form, Field } from 'formik'
 
 function SimpleForm() {
   const initialValues = {
@@ -10,16 +10,30 @@ function SimpleForm() {
     country: '',
     state: '',
     zip: '',
-
   }
+
+  const [value, setValue] = useState(initialValues);
 
   const handleSubmit = (values) => {
     console.log("values : ", values);
   }
+
+  useState(() => {
+    setTimeout(() => {
+      setValue({
+        firstname: 'Amir',
+        lastname: 'Mehrizi',
+        email: 's.a.mehrizi1989@gmail.com',
+        country: 'CA',
+        state: 'toronto',
+        zip: '12axt0089',
+      })
+    }, 2000);
+  }, [])
   return (
     <div className="container">
       <div className="col-md-12 mt-5">
-        <Formik initialValues={initialValues} onSubmit={handleSubmit}>
+        <Formik initialValues={value || initialValues} onSubmit={handleSubmit} enableReinitialize>
           <Form>
             <h4 className="mb-3">Personal information</h4>
 
