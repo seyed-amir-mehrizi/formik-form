@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { Formik, Form, Field } from 'formik'
 
@@ -18,7 +18,7 @@ function SimpleForm() {
     console.log("values : ", values);
   }
 
-  useState(() => {
+  useEffect(() => {
     setTimeout(() => {
       setValue({
         firstname: 'Amir',
