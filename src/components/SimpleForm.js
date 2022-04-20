@@ -47,7 +47,6 @@ function SimpleForm() {
         <Formik initialValues={value || initialValues} onSubmit={handleSubmit} validationSchema={validationSchema} enableReinitialize>
           {
             formik => {
-              console.log("formik : " , formik);
               return (
                 <Form>
                   <h4 className="mb-3">Personal information</h4>
@@ -112,7 +111,7 @@ function SimpleForm() {
                   </div>
 
                   <hr className="mb-4" />
-                  <button className="btn btn-primary btn-lg btn-block" type="submit">
+                  <button className="btn btn-primary btn-lg btn-block" type="submit" disabled={!(formik.isValid && formik.dirty)}>
                     Submit
                   </button>
                 </Form>
